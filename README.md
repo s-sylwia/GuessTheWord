@@ -12,16 +12,15 @@ Installation
 
 To run the game, you will need to have Java installed on your computer.
 
-Contributing
 
 Contributions are welcome! If you find a bug or want to suggest a new feature, please create an issue or submit a pull request.
-Credits
 
+Credits
 This project was created by [s-sylwia].
 
 Technologies
 Project is created with:
-    Java 18
+    Java 18,
     Maven 3.8.1
 
 Dependencies
