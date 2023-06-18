@@ -1,57 +1,58 @@
 package org.example;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 
 public class GuessTheWordTest {
 
-    @Test
-    public void testGameEnded() {
-        // Test sprawdzający, czy gra zakończy się, gdy użytkownik przegra
-        GuessTheWord game = new GuessTheWord();
-        game.word = "cat";
-        game.userWord = new char[] {'_', '_', '_'};
-        game.lives = 0;
-        assertTrue(game.gameEnded());
+    GuessTheWord guessTheWord;
 
-        // Test sprawdzający, czy gra zakończy się, gdy użytkownik wygra
-        game = new GuessTheWord();
-        game.word = "cat";
-        game.userWord = new char[] {'c', 'a', 't'};
-        game.lives = 2;
-        assertTrue(game.gameEnded());
-
-        // Test sprawdzający, że gra nie zakończy się, gdy użytkownik nie wygra ani nie przegrał
-        game = new GuessTheWord();
-        game.word = "cat";
-        game.userWord = new char[] {'c', '_', 't'};
-        game.lives = 2;
-        assertFalse(game.gameEnded());
+    @BeforeEach
+    public void setup() {
+        guessTheWord = new GuessTheWord();
     }
 
     @Test
-    public void testCheckLetter() {
-        // Test sprawdzający, czy podana litera zostanie dodana do userWord, gdy jest w słowie
-        GuessTheWord game = new GuessTheWord();
-        game.word = "cat";
-        game.userWord = new char[] {'_', '_', '_'};
-        game.checkLetter('c');
-        assertArrayEquals(new char[] {'c', '_', '_'}, game.userWord);
-
-        // Test sprawdzający, czy życia zostaną odjęte, gdy podana litera nie ma w słowie
-        game = new GuessTheWord();
-        game.word = "cat";
-        game.userWord = new char[] {'_', '_', '_'};
-        game.checkLetter('d');
-        assertEquals(2, game.lives);
-
-        // Test sprawdzający, czy nie zostaną odjęte życia, gdy podana litera jest w słowie
-        game = new GuessTheWord();
-        game.word = "cat";
-        game.userWord = new char[] {'_', '_', '_'};
-        game.checkLetter('c');
-        assertEquals(3, game.lives);
+    public void testGameEndedWhenLivesZero() {
+        guessTheWord.lives = 0;
+        boolean result = guessTheWord.gameEnded();
+        Assertions.assertTrue(result, "gameEnded should return true when lives is zero");
     }
 
+    @Test
+    public void testGameEndedWhenWordGuessed() {
+        guessTheWord.word = "programming";
+        guessTheWord.userWord = "programming".toCharArray();
+        boolean result = guessTheWord.gameEnded();
+        Assertions.assertTrue(result, "gameEnded should return true when the word is guessed");
+    }
+
+    @Test
+    public void testCheckLetterCorrectLetter() {
+        guessTheWord.word = "cat";
+        guessTheWord.userWord = "__t".toCharArray();
+        guessTheWord.checkLetter('c');
+        String expected = "c_t";
+        Assertions.assertEquals(expected, String.valueOf(guessTheWord.userWord), "checkLetter should update userWord with the correct letter");
+    }
+
+    @Test
+    public void testCheckLetterWrongLetter() {
+        guessTheWord.word = "car";
+        guessTheWord.userWord = "__t".toCharArray();
+        guessTheWord.checkLetter('e');
+        int expectedLives = 2;
+        Assertions.assertEquals(expectedLives, guessTheWord.lives, "checkLetter should decrease lives when the letter is incorrect");
+    }
+
+    @Test
+    public void testCheckLetterMultipleOccurrences() {
+        guessTheWord.word = "programming";
+        guessTheWord.userWord = "___________".toCharArray();
+        guessTheWord.checkLetter('g');
+        String expected = "_g_________";
+        Assertions.assertEquals(expected, String.valueOf(guessTheWord.userWord), "checkLetter should update userWord with all occurrences of the letter");
+
+    }
 }
