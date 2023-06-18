@@ -1,28 +1,51 @@
-GuessTheWord
+# GuessTheWord
 
-A simple console-based game where the user has to guess a word by entering letters one by one.
+GuessTheWord is a simple word-guessing game implemented in Java.
 
-This is a simple command-line game where the player has to guess a hidden word before running out of lives. The player can input a letter at each turn, and if the letter is in the word, it will be revealed. Otherwise, the player loses a life.
-How to Play
+## Table of Contents
 
-To play the game, run the GuessTheWord.java file in your IDE or from the command line. The game will start, and a random word will be chosen from a list of pre-defined words. The length of the word will be displayed as underscores, and the player has to guess the word letter by letter.
+- [Description](#description)
+- [How to Play](#how-to-play)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-The player can input a letter at each turn, and if the letter is in the word, it will be revealed. Otherwise, the player loses a life. The game continues until the player guesses the word or runs out of lives. The player starts with three lives.
-Installation
+## Description
 
-To run the game, you will need to have Java installed on your computer.
+The game randomly selects a word from a predefined list, and the player's task is to guess the word by providing letters one at a time. The player has a limited number of lives, and for each incorrect letter, a life is deducted. The game ends either when the player guesses the word correctly or when all lives are exhausted.
 
+## How to Play
 
-Contributions are welcome! If you find a bug or want to suggest a new feature, please create an issue or submit a pull request.
+1. Run the `Main` class located in the `org.example` package.
+2. The game will display a series of underscores representing the word to be guessed.
+3. Enter a letter and press Enter.
+4. If the letter is correct, it will be revealed in the word.
+5. If the letter is incorrect, a message will be displayed, and a life will be deducted.
+6. Repeat steps 3-5 until the word is guessed or all lives are exhausted.
+7. The game will display a victory message if the word is guessed or a defeat message if all lives are used up.
 
-Credits
-This project was created by [s-sylwia].
+## Installation
 
-Technologies
-Project is created with:
-    Java 18,
-    Maven 3.8.1
+1. Clone the repository or download the source code files.
+2. Open the project in your preferred Java IDE.
 
-Dependencies
-    JUnit 4.13.2
-    
+## Usage
+
+1. Navigate to the `Main` class located in the `org.example` package.
+2. Run the `main` method to start the game.
+
+## Contributing
+
+Contributions to the project are welcome. If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes.
+4. Commit your changes.
+5. Push the branch to your forked repository.
+6. Submit a pull request with a description of your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
