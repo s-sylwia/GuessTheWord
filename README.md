@@ -2,6 +2,12 @@
 
 GuessTheWord is a simple word-guessing game implemented in Java.
 
+## Project Status
+
+**Status: In Progress**
+
+This project is currently in progress and is not yet ready for production use. We are actively working on implementing new features and resolving any issues that arise. Contributions and feedback are welcome!
+
 ## Table of Contents
 
 - [Description](#description)
